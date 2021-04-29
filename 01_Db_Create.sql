@@ -1,3 +1,21 @@
+  
+USE [master]
+GO
+IF db_id('GoYak') IS NULL
+  CREATE DATABASE [GoYak]
+GO
+USE [GoYak]
+GO
+
+DROP TABLE IF EXISTS [Review];
+DROP TABLE IF EXISTS [Favorite];
+DROP TABLE IF EXISTS [Route];
+DROP TABLE IF EXISTS [User];
+DROP TABLE IF EXISTS [RecArea];
+DROP TABLE IF EXISTS [Ammenity];
+
+
+
 GO
 CREATE TABLE [Ammenity] (
   [id] int PRIMARY KEY,
