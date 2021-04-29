@@ -54,7 +54,7 @@ GO
 ALTER TABLE [Review] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
 GO
 
-ALTER TABLE [Ammenity] ADD FOREIGN KEY ([id]) REFERENCES [Route] ([ammenityId])
+ALTER TABLE [Route] ADD FOREIGN KEY ([ammenityId]) REFERENCES [Ammenity] ([id])
 GO
 
 ALTER TABLE [Review] ADD FOREIGN KEY ([routeId]) REFERENCES [Route] ([id])
