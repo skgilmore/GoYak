@@ -29,6 +29,7 @@ CREATE TABLE [RecArea] (
   [keywords] nvarchar(255),
   [address] nvarchar(255),
   [city] nvarchar(255) NOT NULL,
+  [state] nvarchar(255) NOT NULL,
   [zip] int NOT NULL,
   [url] nvarchar(255)
 )
