@@ -26,7 +26,7 @@ export default function Header() {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/add">Add Quote</NavLink>
+                                    <NavLink tag={RRNavLink} to="/route">All Routes</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <a aria-current="page" className="nav-link"

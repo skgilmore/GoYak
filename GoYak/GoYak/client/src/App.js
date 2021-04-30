@@ -4,7 +4,7 @@ import { UserProfileProvider } from "./providers/UserProfileProvider";
 import ApplicationViews from "./components/ApplicationViews";
 import Header from "./components/Header";
 import './App.css';
-
+import { RouteProvider } from "./providers/RouteProvider";
 
 
 function App() {
@@ -12,8 +12,10 @@ function App() {
   return (
     <Router>
       <UserProfileProvider>
-        <Header />
-        <ApplicationViews />
+        <RouteProvider>
+          <Header />
+          <ApplicationViews />
+        </RouteProvider >
       </UserProfileProvider>
     </Router>
   );

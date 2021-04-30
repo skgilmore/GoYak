@@ -1,3 +1,4 @@
+using GoYak.Repositories;
 using GoYak.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace GoYak
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRouteRepository, RouteRepository>();
+
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
@@ -90,9 +93,9 @@ namespace GoYak
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseAuthentication();
+          //  app.UseAuthentication();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
