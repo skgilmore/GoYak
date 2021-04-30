@@ -1,4 +1,3 @@
-  
 USE [master]
 GO
 IF db_id('GoYak') IS NULL
@@ -18,24 +17,24 @@ DROP TABLE IF EXISTS [Ammenity];
 
 GO
 CREATE TABLE [Ammenity] (
-  [id] int PRIMARY KEY,
+  [id] int PRIMARY KEY identity NOT NULL,
   [label] nvarchar(255)
 )
 GO
 CREATE TABLE [RecArea] (
-  [id] int PRIMARY KEY,
+  [id] int PRIMARY KEY identity NOT NULL,
   [name] nvarchar(255) NOT NULL,
   [description] nvarchar(255),
   [keywords] nvarchar(255),
   [address] nvarchar(255),
   [city] nvarchar(255) NOT NULL,
-  [state] nvarchar(255) NOT NULL,
+  [state] nvarchar (25),
   [zip] int NOT NULL,
   [url] nvarchar(255)
 )
 GO
 CREATE TABLE [User] (
-  [id] int PRIMARY KEY,
+  [id] int PRIMARY KEY identity NOT NULL,
   [name] nvarchar(255) NOT NULL,
   [email] nvarchar(255) NOT NULL,
   [userName] nvarchar(255) NOT NULL,
@@ -43,7 +42,7 @@ CREATE TABLE [User] (
 )
 GO
 CREATE TABLE [Route] (
-  [id] int PRIMARY KEY,
+  [id] int PRIMARY KEY identity NOT NULL,
   [name] nvarchar(255) NOT NULL,
   [difficultyLevel] nvarchar(255),
   [length] nvarchar(255),
@@ -53,28 +52,28 @@ CREATE TABLE [Route] (
 GO
 
 CREATE TABLE [Favorite] (
-  [id] int,
+  [id] int identity NOT NULL,
   [userId] int,
   [routeId] int
 )
 GO
 CREATE TABLE [Review] (
-  [id] int PRIMARY KEY,
+  [id] int PRIMARY KEY identity NOT NULL,
   [userId] int NOT NULL,
   [text] nvarchar(255) NOT NULL,
   [timeStamp] nvarchar(255) NOT NULL,
   [routeId] int NOT NULL
 )
 GO
-
-ALTER TABLE [Route] ADD FOREIGN KEY ([recAreaId]) REFERENCES [RecArea] ([id])
-GO
-
-ALTER TABLE [Review] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
-GO
-
-ALTER TABLE [Route] ADD FOREIGN KEY ([ammenityId]) REFERENCES [Ammenity] ([id])
-GO
-
 ALTER TABLE [Review] ADD FOREIGN KEY ([routeId]) REFERENCES [Route] ([id])
+
 GO
+ALTER TABLE [Review] ADD FOREIGN KEY ([userId]) REFERENCES [User] ([id])
+
+GO
+ALTER TABLE [Route] ADD FOREIGN KEY ([recAreaId]) REFERENCES [RecArea] ([id])
+
+GO
+ALTER TABLE [Route] ADD FOREIGN KEY ([ammenityId]) REFERENCES [Ammenity] ([id])
+
+
