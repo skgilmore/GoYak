@@ -15,7 +15,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace GoYak
 {
     public class Startup
@@ -93,9 +92,9 @@ namespace GoYak
             app.UseHttpsRedirection();
 
             app.UseRouting();
-          //  app.UseAuthentication();
+            app.UseAuthentication();
 
-            //app.UseAuthorization();
+           app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

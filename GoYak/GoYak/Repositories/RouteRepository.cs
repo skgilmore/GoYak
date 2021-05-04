@@ -25,9 +25,12 @@ namespace GoYak.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT r.id, r.name, r.difficultyLevel, r.length
+                           SELECT r.id, r.name, r.difficultyLevel, r.length, ra.id as recId, 
+                                ai.id as ammenityId, ra.url, ra.name, ai.label as ammenityLabel
                                
-                          FROM Route r";
+                          FROM Route r
+                            LEFT JOIN RecArea ra on r.recAreaId = ra.Id
+                            LEFT JOIN Ammenity ai on r.ammenityId = ai.Id";
 
                     var reader = cmd.ExecuteReader();
 
@@ -40,6 +43,20 @@ namespace GoYak.Repositories
                             name = DbUtils.GetString(reader, "Name"),
                             difficultyLevel = DbUtils.GetString(reader, "DifficultyLevel"),
                             length = DbUtils.GetString(reader, "Length"),
+                            Ammenity = DbUtils.IsDbNull(reader, "ammenityId") ? null : new Ammenity() 
+                            {
+                                id = DbUtils.GetInt(reader, "ammenityId"),
+                                label = DbUtils.GetString(reader, "ammenityLabel"),
+                            },
+
+                            RecArea = DbUtils.IsDbNull(reader, "recId") ? null :  new RecArea()
+                            {
+                                id = DbUtils.GetInt(reader, "recId"),
+                                name = DbUtils.GetString(reader, "name"),
+                                url = DbUtils.GetString(reader, "url"),
+
+
+                            },
 
                         });
                     }
@@ -53,4 +70,10 @@ namespace GoYak.Repositories
         
                 }
             }
-        
+
+/*  Ammenity = new Ammenity()
+                            {
+                                id = (int)DbUtils.GetNullableInt(reader, "ammenityId"),
+                                label = DbUtils.GetString(reader, "ammenityLabel"),
+                            },
+*/

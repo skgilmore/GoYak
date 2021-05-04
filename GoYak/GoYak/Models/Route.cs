@@ -12,6 +12,12 @@ namespace GoYak.Models
         public string difficultyLevel { get; set; }
         public string length { get; set; }
 
+        public RecArea RecArea { get; set; }
+//       public int? recAreaId { get; set; }
+
+        public Ammenity Ammenity { get; set; }
+//        public int? ammenityId { get; set; }
+
 
     }
 }

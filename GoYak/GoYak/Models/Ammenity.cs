@@ -7,5 +7,7 @@ namespace GoYak.Models
 {
     public class Ammenity
     {
+        public int id { get; set; }
+        public string label { get; set; }
     }
 }
