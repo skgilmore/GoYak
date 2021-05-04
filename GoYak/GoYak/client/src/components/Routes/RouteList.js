@@ -14,6 +14,7 @@ const RouteList = () => {
         getAllRoutes();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    console.log(getAllRoutes, "what are all routes?", routes, "is this array?")
 
     // Maps through each PostCategoryUser object, sending 
     // them to be converted to HTML then prints them all out.

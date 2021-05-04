@@ -12,7 +12,7 @@ export const RouteProvider = (props) => {
 
     const getAllRoutes = () => {
         return getToken().then((token) =>
-            fetch("/api/route", {
+            fetch("/api/route/routeAmmenities", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,

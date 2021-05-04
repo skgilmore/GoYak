@@ -19,12 +19,16 @@ namespace GoYak.Controllers
         }
 
         // GET: Route
-        [HttpGet]
-        public IActionResult Get()
+      //  [HttpGet]
+        //public IActionResult Get()
+        //{
+          //  return Ok(_routeRepository.GetAllWithAmmenitites());
+        //}
+        [HttpGet("routeAmmenities")]
+        public IActionResult GetAllWithAmmenities()
         {
-            return Ok(_routeRepository.GetAll());
+            return Ok(_routeRepository.GetAllWithAmmenities());
         }
-
         // GET: Route/Details/5
         [HttpGet("{id}")]
         public IActionResult Details(int id)

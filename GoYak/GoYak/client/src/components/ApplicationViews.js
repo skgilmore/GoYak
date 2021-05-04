@@ -20,7 +20,7 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
                 </Route>
 
-                <Route path="/route" exact >
+                <Route path="/route/routeAmmenities" exact  >
                     {isLoggedIn ? <RouteList /> : <Redirect to="/login" />}
                 </Route>
 

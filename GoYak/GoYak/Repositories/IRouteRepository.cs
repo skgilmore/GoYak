@@ -5,6 +5,8 @@ namespace GoYak.Repositories
 {
     public interface IRouteRepository
     {
-        List<Route> GetAll();
+       // List<Route> GetAll();
+        List<Route> GetAllWithAmmenities();
     }
 }
+
