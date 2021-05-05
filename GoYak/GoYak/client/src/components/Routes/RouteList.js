@@ -16,6 +16,7 @@ const RouteList = () => {
     }, []);
     console.log(getAllRoutes, "what are all routes?", routes, "is this array?")
 
+
     // Maps through each PostCategoryUser object, sending 
     // them to be converted to HTML then prints them all out.
     /* <Link to="/route/add" className="nav-link">
