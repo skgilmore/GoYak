@@ -1,14 +1,55 @@
 import React from "react";
+import { Card, CardDeck } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default function Hello() {
+
+
+
     return (
-        <span style={{
-            position: "fixed",
-            left: 0,
-            right: 0,
-            top: "50%",
-            marginTop: "-0.5rem",
-            textAlign: "center",
-        }}>hello</span>
+        <CardDeck>
+            <Card>
+                <div class="card bg-dark text-blue">
+                    <img class="card-img" src="https://cdn.shopify.com/s/files/1/0071/1815/9930/files/get_outside_logo.png?height=628&pad_color=fff&v=1530989815&width=1200" alt="Card image"></img>
+                    <Link to={`route/routeAmmenities`}>
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">See All Routes</h5>
+                            <p class="card-text">Check them out!.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                    </Link>
+                </div>
+            </Card>
+            <Card>
+                <div class="card bg-dark text-blue">
+                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg" alt="Card image"></img>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">See All Routes</h5>
+                        <p class="card-text">Check them out!.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+            </Card>
+            <Card>
+                <div class="card bg-dark text-blue">
+                    <img class="card-img" src="https://cdn.shopify.com/s/files/1/0071/1815/9930/files/get_outside_logo.png?height=628&pad_color=fff&v=1530989815&width=1200" alt="Card image"></img>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">See All Routes</h5>
+                        <p class="card-text">Check them out!.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+            </Card>
+            <Card>
+                <div class="card bg-dark text-blue">
+                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg" alt="Card image"></img>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">See All Routes</h5>
+                        <p class="card-text">Check them out!.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+            </Card>
+        </CardDeck>
     );
 }

@@ -19,7 +19,10 @@ export const RouteProvider = (props) => {
                 },
             })
                 .then((res) => res.json())
-                .then(setRoutes)
+                .then((routes) => {
+                    setRoutes(routes)
+                    return routes
+                })
         );
     };
     /*
@@ -95,6 +98,7 @@ export const RouteProvider = (props) => {
             value={{
                 routes,
                 getAllRoutes,
+                setRoutes
 
             }}
         >

@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 import RouteList from "./Routes/RouteList";
+import RouteDifficulty from "./Routes/RoutesByDifficulty";
 
 
 
@@ -24,8 +25,8 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <RouteList /> : <Redirect to="/login" />}
                 </Route>
 
-                <Route path="/login">
-                    <Login />
+                <Route path="/route/routeDifficulty">
+                    {isLoggedIn ? <RouteDifficulty /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/register">

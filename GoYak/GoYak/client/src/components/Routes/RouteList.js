@@ -5,13 +5,14 @@ import { RouteContext } from "../../providers/RouteProvider";
 import Route from "./Route";
 
 const RouteList = () => {
-    const { routes, getAllRoutes } = useContext(RouteContext);
+    const { routes, getAllRoutes, setRoutes } = useContext(RouteContext);
 
     // When the user arrives at localhost:3000/post, request all routes
     // that have been approved and that have a published date before this moment.
     // Posts are already sorted by published dates descending
     useEffect(() => {
         getAllRoutes();
+        setRoutes(routes)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     console.log(getAllRoutes, "what are all routes?", routes, "is this array?")
