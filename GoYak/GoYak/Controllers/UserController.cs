@@ -32,9 +32,12 @@ namespace GoYak.Controllers
         {
             // All newly registered users start out as a "user" user type (i.e. they are not admins)
           //  userProfile.UserTypeId = UserType.USER_TYPE_ID;
-            //_userRepository.Add(userProfile);
+            _userRepository.Add(user);
             return CreatedAtAction(
-                nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
+            nameof(GetByFirebaseUserId),
+            new { firebaseUserId = user.FirebaseUserId },
+            user);
         }
     }
-}
+    }
+

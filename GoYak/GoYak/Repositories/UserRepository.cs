@@ -21,13 +21,11 @@ namespace GoYak.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, Up.FirebaseUserId, up.Name AS UserName, up.Email, up.UserTypeId,
-                               ut.Name AS UserTypeName
-                          FROM User up
-                               LEFT JOIN UserType ut on up.UserTypeId = ut.Id
-                         WHERE FirebaseUserId = @FirebaseuserId";
+                        SELECT up.id, up.firebaseUserId, up.name AS userName, up.email, 
+                          FROM [User] up
+                         WHERE firebaseUserId = @firebaseuserId";
 
-                    DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
+                    DbUtils.AddParameter(cmd, "@firebaseUserId", firebaseUserId);
 
                     User User = null;
 
@@ -36,10 +34,10 @@ namespace GoYak.Repository
                     {
                         User = new User()
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
-                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
-                            Name = DbUtils.GetString(reader, "UserName"),
-                            Email = DbUtils.GetString(reader, "Email"),
+                            Id = DbUtils.GetInt(reader, "id"),
+                            FirebaseUserId = DbUtils.GetString(reader, "firebaseUserId"),
+                            Name = DbUtils.GetString(reader, "userName"),
+                            Email = DbUtils.GetString(reader, "email"),
                          
                         };
                     }
@@ -50,22 +48,26 @@ namespace GoYak.Repository
             }
         }
 
-        public void Add(User User)
+        public void Add(User user)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO User (FirebaseUserId, Name, Email, )
+                    cmd.CommandText = @"INSERT INTO [User] (FirebaseUserId, Name, Email, UserName, Zip)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @Name, @Email, @UserTypeId)";
-                    DbUtils.AddParameter(cmd, "@FirebaseUserId", User.FirebaseUserId);
-                    DbUtils.AddParameter(cmd, "@Name", User.Name);
-                    DbUtils.AddParameter(cmd, "@Email", User.Email);
+                                        VALUES (@FirebaseUserId, @Name, @Email, @UserName @Zip)";
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
+                    DbUtils.AddParameter(cmd, "@Name", user.Name);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+                    DbUtils.AddParameter(cmd, "@UserName", user.UserName);
+                    DbUtils.AddParameter(cmd, "@Zip", user.Zip);
 
 
-                    User.Id = (int)cmd.ExecuteScalar();
+
+
+                    user.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }

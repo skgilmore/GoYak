@@ -65,13 +65,13 @@ namespace GoYak.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT r.id AS reviewId, r.routeId, r.userId, r.text, r.timeStamp,
-                            rt.id AS routeId, r.name,
-                            u.id AS userId, u.name
+                           SELECT r.id AS reviewId, r.routeId, r.userId, r.text, r.timeStamp,
+                            rt.id AS routeId, rt.name as routeName,
+                            u.id AS userId, u.name as userName
                         FROM Review r
                         LEFT JOIN Route rt ON r.routeId = rt.id
-                        LEFT JOIN User u ON r.userId = u.id
-                        WHERE routeId = @routeId
+                        LEFT JOIN [User] u ON r.userId = u.id
+                        WHERE routeId = @routeid
                         ORDER BY r.timeStamp DESC
                     ";
 
@@ -88,8 +88,8 @@ namespace GoYak.Repositories
                             id = reader.GetInt32(reader.GetOrdinal("reviewId")),
                             routeId = reader.GetInt32(reader.GetOrdinal("routeId")),
                             text = reader.GetString(reader.GetOrdinal("text")),
-                            timeStamp = reader.GetDateTime(reader.GetOrdinal("timeStamp")),
-                            name = new User() { Name = reader.GetString(reader.GetOrdinal("Name")) }
+//                            timeStamp = reader.GetDateTime(reader.GetOrdinal("timeStamp")),
+                            name = new User() { Name = reader.GetString(reader.GetOrdinal("userName")) }
                         };
 
 

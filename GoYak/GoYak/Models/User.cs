@@ -14,12 +14,10 @@ namespace GoYak.Models
         [StringLength(28, MinimumLength = 28)]
         public string FirebaseUserId { get; set; }
 
-        [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
+        public string UserName { get; set; }
 
-        [Required]
-        [MaxLength(255)]
+      public int Zip { get; set; }
         public string Email { get; set; }
 
        
