@@ -5,6 +5,7 @@ import ApplicationViews from "./components/ApplicationViews";
 import Header from "./components/Header";
 import './App.css';
 import { RouteProvider } from "./providers/RouteProvider";
+import { ReviewProvider } from "./providers/ReviewProvider";
 
 
 function App() {
@@ -13,8 +14,10 @@ function App() {
     <Router>
       <UserProfileProvider>
         <RouteProvider>
-          <Header />
-          <ApplicationViews />
+          <ReviewProvider>
+            <Header />
+            <ApplicationViews />
+          </ReviewProvider>
         </RouteProvider >
       </UserProfileProvider>
     </Router>

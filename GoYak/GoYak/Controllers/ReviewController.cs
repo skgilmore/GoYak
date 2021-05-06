@@ -1,87 +1,85 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GoYak.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using GoYak.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace GoYak.Controllers
 {
-    public class ReviewController : Controller
+        [Route("api/[controller]")]
+        [ApiController]
+
+    public class ReviewController : ControllerBase
     {
-        // GET: ReviewController
-        public ActionResult Index()
+        private readonly IReviewRepository _reviewRepository;
+        private readonly IUserRepository _userRepository;
+
+        public ReviewController(
+            IReviewRepository reviewRepository,
+            IUserRepository userRepository)
         {
-            return View();
+            _reviewRepository = reviewRepository;
+            _userRepository = userRepository;
+        }
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_reviewRepository.GetAllReviews());
         }
 
-        // GET: ReviewController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: ReviewController/Create
-        public ActionResult Create()
+        [HttpGet("GetReviewByRouteId/{routeId}")]
+        public IActionResult GetReviewByRouteId(int routeId)
         {
-            return View();
-        }
-
-        // POST: ReviewController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            var review = _reviewRepository.GetReviewByRouteId(routeId);
+            if (review == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
+            return Ok(review);
         }
-
-        // GET: ReviewController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPost("add/{routeId}")]
+        public IActionResult Post(Review review)
         {
-            return View();
+            var currentUserProfile = GetCurrentUserProfile();
+
+            review.userId = currentUserProfile.Id;
+            review.timeStamp = DateTime.Now;
+            _reviewRepository.Add(review);
+            return CreatedAtAction("Get", new { id = review.id }, review);
         }
 
-        // POST: ReviewController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ReviewController/Delete/5
+        [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: ReviewController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
+            var currentUserProfile = GetCurrentUserProfile();
             try
             {
-                return RedirectToAction(nameof(Index));
+                _reviewRepository.DeleteReview(id);
+                return Ok();
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return NotFound();
             }
+        }
+        [HttpPut("{id}")]
+        public IActionResult Put(Review review)
+        {
+            //          _reviewRepository.Update(review);
+            return NoContent();
+        }
+
+        // Retrieves the current user object by using the provided firebaseId
+        private User GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }

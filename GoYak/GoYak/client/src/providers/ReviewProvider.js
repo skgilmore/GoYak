@@ -1,60 +1,66 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext, useContext } from "react";
+import "firebase/auth";
+import { UserProfileContext } from "./UserProfileProvider";
+import { useHistory } from "react-router-dom";
 
-/* -------------------- ALLOW IMPORT OF CONTEXT TO TO BE USED BY INDIVIDUAL COMPONENTS-------------------- */
-export const ReviewContext = createContext()
+export const ReviewContext = createContext();
+
 
 export const ReviewProvider = (props) => {
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
+    const { getToken } = useContext(UserProfileContext);
+    const history = useHistory();
 
-    const getReviews = () => {
-        return fetch('http://localhost:8088/reviews')
-            .then(res => res.json())
-            .then(setReviews)
-    }
-    const getReviewsById = (id) => {
-        return fetch(`http://localhost:8088/reviews/${id}?_expand=route`)
-            .then(res => res.json())
+    const getAllReviews = (routeId) => {
+        return getToken()
+            .then(token => fetch(`/api/review/getReviewByRouteId/${routeId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(res => res.json())
+                .then(setReviews));
+    };
+    //adding a new comment
+    const addReview = (review) => {
+        return getToken().then((token) => {
+            return fetch(`/api/review/add/${review.routeId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(review), //this stringifies our review object meaning it changes our object into string object
+            })
+                .then((res) => {
+                    const response = res.json();
+                    return response;
+                }) //then send the stringified object(res), and we will use this in our PostForm after we add new object
 
-    }
+                .then((reviewObject) => history.push(`/review/${reviewObject.id}`));
 
-    const addReview = review => {
-        return fetch(`http://localhost:8088/reviews`, {
+        });
 
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(review)
-        })
-            .then(response => response.json())
-            .then(getReviews)
+    };;
 
-    }
-    const updateReview = review => {
-        return fetch(`http://localhost:8088/reviews/${review.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(review)
-        })
-            .then(getReviews)
-    }
 
-    const deleteReview = reviewId => {
-        return fetch(`http://localhost:8088/reviews/${reviewId}`, {
-            method: "DELETE"
-        })
-            .then(getReviews)
-    }
-    /* -------------------- To make the cHats, and the cHat functions available to other components i.e. expose child elements -------------------- */
+    const deleteReview = (reviewId) =>
+        getToken().then((token) =>
+            fetch(`/api/review/${reviewId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }).then(history.go(0))
+
+        );
+
 
     return (
-        <ReviewContext.Provider value={{
-            reviews, getReviews, addReview, deleteReview, getReviewsById, updateReview
-
-        }}>
+        <ReviewContext.Provider value={{ reviews, getAllReviews, deleteReview, addReview }}>
             {props.children}
         </ReviewContext.Provider>
-    )
-}
+    );
+};

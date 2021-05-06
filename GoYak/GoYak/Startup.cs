@@ -1,3 +1,4 @@
+using GoYak.Controllers;
 using GoYak.Repositories;
 using GoYak.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,6 +33,8 @@ namespace GoYak
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
+
 
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
