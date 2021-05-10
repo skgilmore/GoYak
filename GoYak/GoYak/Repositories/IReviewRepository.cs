@@ -5,11 +5,13 @@ namespace GoYak.Controllers
 {
     public interface IReviewRepository
     {
-        void Add(Review review);
+        void Add(Review review, int routeId);
         void DeleteReview(int id);
-        void EditReview(Review review);
+        void Update (Review review);
         Review GetReviewById(int id);
         List<Review> GetAllReviews();
         List<Review> GetReviewByRouteId (int routeId);
+        //void Update(Review review);
+        // Review GetById(int id);
     }
 }

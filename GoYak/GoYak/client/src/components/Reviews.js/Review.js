@@ -2,17 +2,22 @@ import { Card, CardBody, CardText, Button } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 import { ReviewContext } from "../../providers/ReviewProvider";
 import React, { useContext } from "react";
+import ReviewList from "./ReviewsList";
+import { ReviewDelete } from "./ReviewDelete";
+import { ReviewEdit } from "./ReviewEdit";
+
+
+
 
 
 const Review = ({ review }) => {
     const history = useHistory();
 
-    const { deleteReview } = useContext(ReviewContext);
+    //    const { deleteReview } = useContext(ReviewContext);
 
-
-    const reviewDelete = () => {
-        let currentUser = JSON.parse(sessionStorage.getItem("userProfile"));
-        if (review.userId === currentUser.id) {
+    let currentUser = JSON.parse(sessionStorage.getItem("userProfile"));
+    /*
+        const ReviewDelete = () => {
             return <Button type="button" onClick={() => {
                 const confirmBox = window.confirm(
                     "Do you really want to delete this Review?"
@@ -20,13 +25,14 @@ const Review = ({ review }) => {
                 if (confirmBox === true) {
                     deleteReview(review.id);
                     //use a history.push to send it back to the list of comments
-
+    
                 }
             }} className="delete-button">
                 Delete
-            </Button>
+                    </Button>
         }
-    }
+        */
+
 
 
 
@@ -48,11 +54,11 @@ const Review = ({ review }) => {
                 <CardBody>
                     <CardText>
                         <small>
-                            Reviewer: {review.name.name}
+                            Reviewer: {review.user.name}
                         </small>
                     </CardText>
-
-                    {reviewDelete(review.id)}
+                    {review.user.id === currentUser.id && <ReviewDelete />}
+                    {review.user.id === currentUser.id && <ReviewEdit key={review.id} review={review} />}
                 </CardBody>
             </Card>
         </div >
@@ -60,3 +66,4 @@ const Review = ({ review }) => {
 };
 
 export default Review;
+//    <ReviewList></ReviewList>

@@ -21,7 +21,7 @@ namespace GoYak.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.id, up.firebaseUserId, up.name AS userName, up.email, 
+                        SELECT up.id, up.firebaseUserId, up.name AS userName, up.email
                           FROM [User] up
                          WHERE firebaseUserId = @firebaseuserId";
 
@@ -57,7 +57,7 @@ namespace GoYak.Repository
                 {
                     cmd.CommandText = @"INSERT INTO [User] (FirebaseUserId, Name, Email, UserName, Zip)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @Name, @Email, @UserName @Zip)";
+                                        VALUES (@FirebaseUserId, @Name, @Email, @UserName, @Zip)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@Name", user.Name);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);

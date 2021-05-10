@@ -56,10 +56,36 @@ export const ReviewProvider = (props) => {
             }).then(history.go(0))
 
         );
+    const updateReview = (review) => {
+        debugger
+        return getToken().then((token) =>
+            fetch(`/api/review/edit/${review.id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(review),
+            })
+            //.then(history.push(`/api/review/getReviewByRouteId/${routeId}`))
+        );
+    };
+
+    const getReviewById = (reviewId) =>
+        getToken().then((token) =>
+            fetch(`/api/review/edit/${reviewId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+        );
+    //.then((res) => res.json())
+
 
 
     return (
-        <ReviewContext.Provider value={{ reviews, getAllReviews, deleteReview, addReview }}>
+        <ReviewContext.Provider value={{ reviews, getAllReviews, deleteReview, addReview, updateReview, getReviewById }}>
             {props.children}
         </ReviewContext.Provider>
     );

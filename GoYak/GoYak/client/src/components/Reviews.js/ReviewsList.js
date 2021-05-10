@@ -1,29 +1,33 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ReviewContext } from "../../providers/ReviewProvider";
 import Review from "./Review";
 import { useParams } from "react-router-dom";
 import { Button } from "reactstrap"
+import { deleteReview } from "./ReviewDelete"
 
 const ReviewList = () => {
-    const { reviews, getAllReviews } = useContext(ReviewContext);
+    const { reviews, getAllReviews, deleteReview } = useContext(ReviewContext);
     const { id } = useParams();
-
+    // const history = useHistory();
     useEffect(() => {
         getAllReviews(id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Maps through each PostCategoryUser object, sending 
+    // Maps through each Review object, sending 
     // them to be converted to HTML then prints them all out.
     return (
         <section>
             <Link to={`/review/getReviewByRouteId/${id}`} className="nav-link">
-
             </Link>
-            {reviews.map((c) => (
-                <Review key={c.id} review={c} />
-            ))}
+
+
+            {reviews.map((review) => {
+
+                return <Review key={review.id} review={review} />
+            }
+            )}
 
 
             <Link to={`/review/add/${id}`} className="nav-link">
@@ -40,6 +44,8 @@ const ReviewList = () => {
 
         </section >
     );
-};
+}
+
+//{deleteReview && <a href="/delete">delete</a>}
 
 export default ReviewList;

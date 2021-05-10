@@ -6,8 +6,9 @@ import Register from "./Register";
 import Hello from "./Hello";
 import RouteList from "./Routes/RouteList";
 //import RouteDifficulty from "./Routes/RoutesByDifficulty";
-import ReviewForm from "./Reviews/ReviewForm";
-import ReviewList from "./Reviews/ReviewsList";
+import ReviewForm from "./Reviews.js/ReviewForm";
+import ReviewList from "./Reviews.js/ReviewsList";
+import { ReviewDetail } from "./Reviews.js/ReviewDetails";
 
 //<Route path="/route/routeDifficulty">
 //{isLoggedIn ? <RouteDifficulty /> : <Redirect to="/login" />}
@@ -20,6 +21,12 @@ export default function ApplicationViews() {
     return (
         <main>
             <Switch>
+                <Route path="/review/edit/:id" exact>
+                    {isLoggedIn ? <ReviewDetail /> : <Login />}
+                </Route>
+                <Route path="/login" exact>
+                    {isLoggedIn ? <Hello /> : <Login />}
+                </Route>
                 <Route path="/" exact>
                     {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
                 </Route>

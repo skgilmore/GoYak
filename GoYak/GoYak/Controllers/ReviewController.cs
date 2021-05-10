@@ -31,7 +31,17 @@ namespace GoYak.Controllers
         {
             return Ok(_reviewRepository.GetAllReviews());
         }
-
+        [HttpGet("edit/{reviewId}")]
+        public IActionResult GetReviewById (int reviewId)
+        {
+            var review = _reviewRepository.GetReviewById(reviewId);
+            if (review != null)
+            {
+                return Ok(review);
+            }
+            return NotFound();
+        }
+     
 
         [HttpGet("GetReviewByRouteId/{routeId}")]
         public IActionResult GetReviewByRouteId(int routeId)
@@ -44,13 +54,12 @@ namespace GoYak.Controllers
             return Ok(review);
         }
         [HttpPost("add/{routeId}")]
-        public IActionResult Post(Review review)
+        public IActionResult Post(Review review, int routeId)
         {
             var currentUserProfile = GetCurrentUserProfile();
-
             review.userId = currentUserProfile.Id;
             review.timeStamp = DateTime.Now;
-            _reviewRepository.Add(review);
+            _reviewRepository.Add(review, routeId);
             return CreatedAtAction("Get", new { id = review.id }, review);
         }
 
@@ -68,10 +77,11 @@ namespace GoYak.Controllers
                 return NotFound();
             }
         }
-        [HttpPut("{id}")]
-        public IActionResult Put(Review review)
+        [HttpPut("edit/{id}")]
+        public IActionResult Put (Review review)
         {
-            //          _reviewRepository.Update(review);
+      
+            _reviewRepository.Update(review);
             return NoContent();
         }
 

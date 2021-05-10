@@ -1,14 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "../../providers/ReviewProvider.js";
 import { FormGroup, Label } from "reactstrap";
+import { Link, useHistory, useParams } from "react-router-dom";
+
+
 
 export const ReviewForm = () => {
     const { addReview } = useContext(ReviewContext);
+
+    const { routeId } = useParams();
+    const history = useHistory();
 
     //With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
     //Define the initial state of the form inputs with useState()
     const [review, setReview] = useState({
         text: "",
+        routeId,
     });
 
     //wait for data before button is active
@@ -29,7 +36,6 @@ export const ReviewForm = () => {
     };
 
 
-
     const handleClickSaveReview = () => {
         console.log(review);
 
@@ -41,14 +47,13 @@ export const ReviewForm = () => {
         } else {
             //disable the button - no extra clicks
             setIsLoading(true); //this ensures the user cannot repeatedly click the button while the API is being updated
-
             //POST - add
             addReview({
                 //if not, this must be a new note so the input fields will be empty
                 text: review.text,
-
-            });
-            //after we add the new review object, we then pass that new review object to our .then() function
+                routeId: review.routeId
+            })
+                .then(() => history.push(`/review/getReviewByRouteId/${routeId}`));
             //then we grab the id of the new review
             //and we push the id of the new review object to our url
         }
