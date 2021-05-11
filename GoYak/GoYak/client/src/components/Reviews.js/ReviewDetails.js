@@ -10,8 +10,9 @@ export const ReviewDetail = () => {
     const [review, setReview] = useState({})
     const { reviewId } = useParams();
     const history = useHistory();
+    //let reviewId = review.id
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
 
     //-------------------- FIND THE Review TO DISPLAY BASED ON Review ID ------------

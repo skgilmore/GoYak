@@ -14,9 +14,11 @@ const ReviewList = () => {
         getAllReviews(id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    console.log(reviews, "where you at")
 
     // Maps through each Review object, sending 
     // them to be converted to HTML then prints them all out.
+    //{review.user.id === currentUser.id && <ReviewEdit key={review.id} review={review} />}
     return (
         <section>
             <Link to={`/review/getReviewByRouteId/${id}`} className="nav-link">
@@ -24,14 +26,15 @@ const ReviewList = () => {
 
 
             {reviews.map((review) => {
-
                 return <Review key={review.id} review={review} />
             }
             )}
 
 
+
             <Link to={`/review/add/${id}`} className="nav-link">
                 <Button>
+
                     <Button style={{
                         color: "black",
                     }}>

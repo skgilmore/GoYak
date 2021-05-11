@@ -21,7 +21,7 @@ export const ReviewProvider = (props) => {
             })
                 .then(res => res.json())
                 .then(setReviews));
-    };
+    };         //.then(setReviews));
     //adding a new comment
     const addReview = (review) => {
         return getToken().then((token) => {
@@ -57,7 +57,7 @@ export const ReviewProvider = (props) => {
 
         );
     const updateReview = (review) => {
-        debugger
+
         return getToken().then((token) =>
             fetch(`/api/review/edit/${review.id}`, {
                 method: "PUT",
@@ -71,16 +71,19 @@ export const ReviewProvider = (props) => {
         );
     };
 
-    const getReviewById = (reviewId) =>
-        getToken().then((token) =>
+    const getReviewById = (reviewId) => {
+        return getToken().then((token) =>
             fetch(`/api/review/edit/${reviewId}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-            })
+                //   body: JSON.stringify(review),
+
+            }).then((res) => res.json())
+
         );
-    //.then((res) => res.json())
+    }
 
 
 

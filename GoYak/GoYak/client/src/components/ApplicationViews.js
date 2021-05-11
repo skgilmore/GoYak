@@ -21,7 +21,7 @@ export default function ApplicationViews() {
     return (
         <main>
             <Switch>
-                <Route path="/review/edit/:id" exact>
+                <Route path="/review/edit/:reviewId" exact>
                     {isLoggedIn ? <ReviewDetail /> : <Login />}
                 </Route>
                 <Route path="/login" exact>
@@ -31,7 +31,7 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
                 </Route>
 
-                <Route exact path="/review/getReviewByRouteId/:id">
+                <Route path="/review/getReviewByRouteId/:id">
                     {isLoggedIn ? <ReviewList /> : <Redirect to="/login" />}
                 </Route>
                 <Route path="/review/add/:routeId(\d+)" >

@@ -93,7 +93,7 @@ namespace GoYak.Repositories
                             id = reader.GetInt32(reader.GetOrdinal("reviewId")),
                             routeId = reader.GetInt32(reader.GetOrdinal("routeId")),
                             text = reader.GetString(reader.GetOrdinal("text")),
-                            timeStamp = DbUtils.GetDateTime(reader, ("timeStamp")),   
+                            timeStamp = DbUtils.GetNullableDateTime(reader, "timeStamp"),
                             user = new User()
                             {
                                 Id = DbUtils.GetInt(reader, "UserId"),
@@ -195,7 +195,7 @@ namespace GoYak.Repositories
                             id = reader.GetInt32(reader.GetOrdinal("id")),
                             text = reader.GetString(reader.GetOrdinal("text")),
                             routeId = reader.GetInt32(reader.GetOrdinal("routeId")),
-                            timeStamp = reader.GetDateTime(reader.GetOrdinal("timeStamp")),
+                           timeStamp = DbUtils.GetNullableDateTime(reader, "timeStamp"),
                             userId = reader.GetInt32(reader.GetOrdinal("userId"))
                         };
 
