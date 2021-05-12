@@ -3,19 +3,19 @@ import { Card, CardBody, CardHeader, CardText, Button, CardImg, CardDeck, Collap
 import { RouteContext } from "../../providers/RouteProvider";
 import Route from "./Route";
 
-const RouteDifficulty = () => {
+const RouteLength = () => {
 
     /* -------------------- To have access to routes -------------------- */
-    const { getAllRoutes, routes } = useContext(RouteContext)
+    const { getAllRoutesByDistance, routes } = useContext(RouteContext)
 
     /* -------------------- Use use State to update the state of  routes as it is changed -------------------- */
 
-    const [shortLengthRoutes, setShortLengthtRoutes] = useState([])
-    const [mediumLengthRoutes, setMediumLengthRoutes] = useState([])
+    const [shortLengthRoutes, setShortLengthRoutes] = useState([])
+    const [tailoredLengthRoutes, setTailoredLengthRoutes] = useState([])
     const [longLengthRoutes, setLongLengthRoutes] = useState([])
 
 
-    /* -------------------- To have access to the filter, filter croutes by their difficulty level , reset state and rerender page-------------------- */
+    /* -------------------- To have access to the filter, filter routes by their varying lengths , reset state and rerender page-------------------- */
 
     const [isLoading, setIsLoading] = useState(true);
     //    const [routes, setRoutes] = useState([])
@@ -23,32 +23,32 @@ const RouteDifficulty = () => {
     /* -------------------- Reset the state of the page to show only routes with matching difficulty levels -------------------- */
 
     useEffect(() => {
-        getAllRoutes()
+        getAllRoutesByDistance()
 
     }, [])
 
     useEffect(() => {
-        console.log("routeshard?", routes)
-        const shortLengthRoutes = routes.filter(route => route.length === "hard")
-        setHardRoutes(shortLengthRoutes)
-        const mediumLengthRoutes = routes.filter(route => route.difficultyLevel === "medium")
-        setMediumLengthRoutes(mediumLengthRoutes)
-        const longLengthRoutes = routes.filter(route => route.difficultyLevel === "easy")
+        console.log("routeshort?", routes)
+        const shortLengthRoutes = routes.filter(route => route.routeDistance === "short")
+        setShortLengthRoutes(shortLengthRoutes)
+        const tailoredLengthRoutes = routes.filter(route => route.routeDistance === "tailored")
+        setTailoredLengthRoutes(tailoredLengthRoutes)
+        const longLengthRoutes = routes.filter(route => route.routeDistance === "long")
         setLongLengthRoutes(longLengthRoutes)
 
     }, [routes])
 
 
-    console.log(getAllRoutes, "allroutesDifficulty", routes, "array in diff?", hardRoutes, "arrayofeasy?")
+    console.log(getAllRoutesByDistance, "allroutes", shortLengthRoutes, "array in short?", longLengthRoutes, "arrayoflong?")
     return (
         <>
             <h2>Challenge Accepted</h2>
             <Card>
                 <CardBody>
 
-                    {hardRoutes.map(route => {
+                    {shortLengthRoutes.map(route => {
                         /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
-                        return <Route key={route.id} route={route} difficultyLevel={route.difficultyLevel} />
+                        return <Route key={route.id} route={route} routeDistance={route.routeDistance} />
                     })}
                 </CardBody>
             </Card>
@@ -56,46 +56,27 @@ const RouteDifficulty = () => {
             <Card>
                 <CardBody>
 
-                    {longLengthRoutes.map(route => {
+                    {tailoredLengthRoutes.map(route => {
                         /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
-                        return <Route key={route.id} route={route} difficultyLevel={route.difficultyLevel} />
+                        return <Route key={route.id} route={route} routeDistance={route.routeDistance} />
                     })}
                 </CardBody>
             </Card>
-            <h2>Hakunah Matata</h2>
+            <h2>Meh you got this?</h2>
             <Card>
                 <CardBody>
 
                     {longLengthRoutes.map(route => {
                         /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
-                        return <Route key={route.id} route={route} difficultyLevel={route.difficultyLevel} />
+                        return <Route key={route.id} route={route} routeDistance={route.routeDistance} />
                     })}
                 </CardBody>
             </Card>
-            <h2>Hakunah Matata</h2>
-            <Card>
-                <CardBody>
 
-                    {longLengthRoutes.map(route => {
-                        /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
-                        return <Route key={route.id} route={route} difficultyLevel={route.difficultyLevel} />
-                    })}
-                </CardBody>
-            </Card>
-            <h2>Meh Youre Good Kid</h2>
-            <Card>
-                <CardBody>
-
-                    {mediumLengthRoutes.map(route => {
-                        /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
-                        return <Route key={route.id} route={route} difficultyLevel={route.difficultyLevel} />
-                    })}
-                </CardBody>
-            </Card>
 
         </>
     )
 }
 
-export default RouteDifficulty;
+export default RouteLength;
 

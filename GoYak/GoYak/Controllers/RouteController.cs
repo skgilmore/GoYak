@@ -1,4 +1,5 @@
 ﻿using GoYak.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoYak.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RouteController : Controller
@@ -18,12 +20,12 @@ namespace GoYak.Controllers
             _routeRepository = routeRepository;
         }
 
-        // GET: Route
-      //  [HttpGet]
-        //public IActionResult Get()
-        //{
-          //  return Ok(_routeRepository.GetAllWithAmmenitites());
-        //}
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_routeRepository.GetAllRoutes());
+        }
+
         [HttpGet("routeAmmenities")]
         public IActionResult GetAllWithAmmenities()
         {
@@ -35,6 +37,12 @@ namespace GoYak.Controllers
         {
             return View();
         }
+        [HttpGet("distance")]
+        public IActionResult GetAllByDistance()
+        {
+            return Ok(_routeRepository.GetAllByDistance());
+        }
+      
 
         /*
         // POST: Route/Create

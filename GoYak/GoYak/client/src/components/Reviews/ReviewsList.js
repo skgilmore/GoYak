@@ -25,7 +25,7 @@ const ReviewList = () => {
             </Link>
 
 
-            {reviews.map((review) => {
+            {reviews?.map((review) => {
                 return <Review key={review.id} review={review} />
             }
             )}

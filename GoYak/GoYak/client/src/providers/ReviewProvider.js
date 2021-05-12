@@ -11,6 +11,7 @@ export const ReviewProvider = (props) => {
     const { getToken } = useContext(UserProfileContext);
     const history = useHistory();
 
+
     const getAllReviews = (routeId) => {
         return getToken()
             .then(token => fetch(`/api/review/getReviewByRouteId/${routeId}`, {
@@ -21,7 +22,10 @@ export const ReviewProvider = (props) => {
             })
                 .then(res => res.json())
                 .then(setReviews));
-    };         //.then(setReviews));
+    };
+
+    //.then(setReviews));
+    // .then(setReviews));
     //adding a new comment
     const addReview = (review) => {
         return getToken().then((token) => {

@@ -18,7 +18,7 @@ export default function Header() {
 
     return (
         <div>
-            <Navbar color="dark" dark expand="md">
+            <Navbar color="primary" dark expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">GoYak</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
@@ -48,8 +48,8 @@ export default function Header() {
                     <Nav navbar>
                         <NavItem>
                             <a aria-current="page" className="nav-link"
-                                href="https://www.youtube.com/watch?v=3N_ywhx6_K0"
-                                target="_new">Grace Hopper on Letterman</a>
+                                href="https://www.redcross.org/content/dam/redcross/atg/PDFs/Take_a_Class/FA_CPR_AED_PM_sample_chapter.pdf"
+                                target="_new">Know Before You Go</a>
                         </NavItem>
                     </Nav>
                 </Collapse>

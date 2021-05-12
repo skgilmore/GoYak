@@ -31,10 +31,10 @@ namespace GoYak.Controllers
         {
             return Ok(_reviewRepository.GetAllReviews());
         }
-        [HttpGet("edit/{reviewId}")]
-        public IActionResult GetReviewById (int reviewId)
+        [HttpGet("edit/{id}")]
+        public IActionResult GetReviewById (int id)
         {
-            var review = _reviewRepository.GetReviewById(reviewId);
+            var review = _reviewRepository.GetReviewById(id);
             if (review != null)
             {
                 return Ok(review);

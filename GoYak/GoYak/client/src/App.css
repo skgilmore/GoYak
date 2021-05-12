@@ -41,4 +41,20 @@
     height: 250px;
     width: 100%;
   }
+  .card-container {
+    width:300px;
+    overflow: hidden;
+    box-shadow: 0 px 0px 15 px -5px;
+  }
+
+  .image-container{
+    overflow: hidden;
+    height: 200px;
+  }
+  .faveCards{
+    height: 250 px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 px 0px  15px -5px;
+  }
   

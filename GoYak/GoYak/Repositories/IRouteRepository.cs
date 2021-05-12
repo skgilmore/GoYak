@@ -7,6 +7,9 @@ namespace GoYak.Repositories
     {
        // List<Route> GetAll();
         List<Route> GetAllWithAmmenities();
+        List<Route> GetAllByDistance();
+        List<Route> GetAllRoutes();
+
     }
 }
 

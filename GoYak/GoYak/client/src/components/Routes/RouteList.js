@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import { RouteContext } from "../../providers/RouteProvider";
 import Route from "./Route";
+import FavoritedRoutes from "./Route"
 
 const RouteList = () => {
     const { routes, getAllRoutes, setRoutes } = useContext(RouteContext);
@@ -23,16 +24,20 @@ const RouteList = () => {
     /* <Link to="/route/add" className="nav-link">
          New Route
          </Link>
+            <div className="image-container">
+                <img src={route.url} alt='' />
+            </div>
          */
     return (
-        <Container>
-            <Row>
+        <div className='card-container'>
+            <div className="card-title">
                 {routes.map((r) => (
                     <Col md="4"><Route key={r.id} route={r} /></Col>
                 ))}
-            </Row>
-        </Container>
+            </div>
+        </div>
     );
 };
+//<FavoritedRoutes> </FavoritedRoutes>
 
 export default RouteList;

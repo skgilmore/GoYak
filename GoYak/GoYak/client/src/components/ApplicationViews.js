@@ -5,14 +5,13 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 import RouteList from "./Routes/RouteList";
-//import RouteDifficulty from "./Routes/RoutesByDifficulty";
-import ReviewForm from "./Reviews.js/ReviewForm";
-import ReviewList from "./Reviews.js/ReviewsList";
-import { ReviewDetail } from "./Reviews.js/ReviewDetails";
+import RouteDifficulty from "./Routes/RoutesByDifficulty";
+import ReviewForm from "./Reviews/ReviewForm";
+import ReviewList from "./Reviews/ReviewsList";
+import { ReviewDetail } from "./Reviews/ReviewDetails";
+import RouteLength from "./Routes/RoutesByLength";
+import RouteAmmenities from "./Routes/RoutesByAmmenities";
 
-//<Route path="/route/routeDifficulty">
-//{isLoggedIn ? <RouteDifficulty /> : <Redirect to="/login" />}
-//</Route>
 
 
 export default function ApplicationViews() {
@@ -30,6 +29,9 @@ export default function ApplicationViews() {
                 <Route path="/" exact>
                     {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
                 </Route>
+                <Route path="/route" exact>
+                    {isLoggedIn ? <RouteList /> : <Redirect to="/login" />}
+                </Route>
 
                 <Route path="/review/getReviewByRouteId/:id">
                     {isLoggedIn ? <ReviewList /> : <Redirect to="/login" />}
@@ -39,9 +41,15 @@ export default function ApplicationViews() {
                 </Route>
 
                 <Route path="/route/routeAmmenities" exact  >
-                    {isLoggedIn ? <RouteList /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <RouteAmmenities /> : <Redirect to="/login" />}
                 </Route>
 
+                <Route path="/route/difficulty" exact  >
+                    {isLoggedIn ? <RouteDifficulty /> : <Redirect to="/login" />}
+                </Route>
+                <Route path="/route/distance" exact  >
+                    {isLoggedIn ? <RouteLength /> : <Redirect to="/login" />}
+                </Route>
 
                 <Route path="/register">
                     <Register />

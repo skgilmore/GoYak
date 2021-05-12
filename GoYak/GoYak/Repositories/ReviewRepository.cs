@@ -71,10 +71,11 @@ namespace GoYak.Repositories
                 {
                     cmd.CommandText = @"
                            SELECT r.id AS reviewId, r.routeId, r.userId, r.text, r.timeStamp,
-                            rt.id AS routeId, rt.name as routeName,
+                            rt.id AS routeId, rt.name as routeName, rt.recAreaId, ra.id, ra.url,
                             u.id AS userId, u.name as userName, u.fireBaseUserId
                         FROM Review r
                         LEFT JOIN Route rt ON r.routeId = rt.id
+                        LEFT JOIN RecArea ra ON rt.recAreaId = ra.id
                         LEFT JOIN [User] u ON r.userId = u.id
                         WHERE routeId = @routeid
                         ORDER BY r.timeStamp DESC
@@ -94,6 +95,7 @@ namespace GoYak.Repositories
                             routeId = reader.GetInt32(reader.GetOrdinal("routeId")),
                             text = reader.GetString(reader.GetOrdinal("text")),
                             timeStamp = DbUtils.GetNullableDateTime(reader, "timeStamp"),
+                            url = reader.GetString(reader.GetOrdinal("url")),
                             user = new User()
                             {
                                 Id = DbUtils.GetInt(reader, "UserId"),
