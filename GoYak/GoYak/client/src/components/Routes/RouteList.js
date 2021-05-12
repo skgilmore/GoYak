@@ -1,0 +1,43 @@
+import React, { useContext, useEffect } from "react";
+import { Container, Row, Col } from "reactstrap";
+import { Link } from "react-router-dom";
+import { RouteContext } from "../../providers/RouteProvider";
+import Route from "./Route";
+import FavoritedRoutes from "./Route"
+
+const RouteList = () => {
+    const { routes, getAllRoutes, setRoutes } = useContext(RouteContext);
+
+    // When the user arrives at localhost:3000/post, request all routes
+    // that have been approved and that have a published date before this moment.
+    // Posts are already sorted by published dates descending
+    useEffect(() => {
+        getAllRoutes();
+        setRoutes(routes)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    console.log(getAllRoutes, "what are all routes?", routes, "is this array?")
+
+
+    // Maps through each PostCategoryUser object, sending 
+    // them to be converted to HTML then prints them all out.
+    /* <Link to="/route/add" className="nav-link">
+         New Route
+         </Link>
+            <div className="image-container">
+                <img src={route.url} alt='' />
+            </div>
+         */
+    return (
+        <div className='card-container'>
+            <div className="card-title">
+                {routes.map((r) => (
+                    <Col md="4"><Route key={r.id} route={r} /></Col>
+                ))}
+            </div>
+        </div>
+    );
+};
+//<FavoritedRoutes> </FavoritedRoutes>
+
+export default RouteList;
