@@ -9,8 +9,9 @@ import { FavoriteContext } from "../../providers/FavoriteProvider"
 import { unstable_concurrentAct } from "react-dom/cjs/react-dom-test-utils.development";
 
 const Route = ({ route }) => {
-    const { addFavorite, getFavoritesByUserProfileId } = useContext(FavoriteContext);
+    const { addFavorite, getFavoritesByUserProfileId, favorites } = useContext(FavoriteContext);
     const history = useHistory();
+
     let currentUser = JSON.parse(sessionStorage.getItem("userProfile"))
     let userId = currentUser
 
@@ -73,9 +74,10 @@ const Route = ({ route }) => {
                                     })
                                 }
                             </small>
-                            <><Button className="favorite-btn" onClick={handleAddFavorite}>Add Favorite</Button></>
-                        :
-                        <></>
+                            {route.user?.id !== currentUser.id && <><Button className="favorite-btn" onClick={handleAddFavorite}>Add Favorite</Button></>}
+
+
+                            <></>
                         </CardText>
                     </CardBody>
                 </Card>

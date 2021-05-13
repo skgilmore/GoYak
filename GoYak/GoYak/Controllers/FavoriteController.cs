@@ -11,7 +11,6 @@ using GoYak.Repositories;
 
 namespace GoYak.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
 

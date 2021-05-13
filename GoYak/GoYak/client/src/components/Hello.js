@@ -10,14 +10,17 @@ export default function Hello() {
     return (
         <CardDeck>
             <Card>
-                <div class="card bg-dark text-blue">
-                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg"></img>
-                    <Link to={`route/`}>
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">Routes</h5>
-                            <p class="card-text">Check them out!.</p>
-                        </div>
-                    </Link>
+                <div class="card text-center">
+                    <div class="card bg-dark text-black">
+                        <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg"></img>
+                        <Link to={`route/`}>
+                            <div class="card-img-overlay">
+                                <h5 class="card-title text-dark font-weight-bold">Routes</h5>
+                                <i class="fas fa-external-link-square-alt color-black"></i>
+                                <p class="text-dark">Check them out!.</p>
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </Card>
             <Card>

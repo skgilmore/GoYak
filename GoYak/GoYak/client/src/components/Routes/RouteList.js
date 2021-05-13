@@ -21,23 +21,16 @@ const RouteList = () => {
 
     // Maps through each PostCategoryUser object, sending 
     // them to be converted to HTML then prints them all out.
-    /* <Link to="/route/add" className="nav-link">
-         New Route
-         </Link>
-            <div className="image-container">
-                <img src={route.url} alt='' />
-            </div>
-         */
+
     return (
         <div className='card-container'>
             <div className="card-title">
                 {routes.map((r) => (
-                    <Col md="4"><Route key={r.id} route={r} /></Col>
+                    <Row md="2 justify-content-center"><Route key={r.id} route={r} /></Row>
                 ))}
             </div>
         </div>
     );
 };
-//<FavoritedRoutes> </FavoritedRoutes>
 
 export default RouteList;

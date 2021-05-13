@@ -43,7 +43,7 @@ const RouteDifficulty = () => {
     console.log(getAllRoutes, "allroutesDifficulty", routes, "array in diff?", hardRoutes, "arrayofhard?", mediumRoutes, "medArray", easyRoutes, "easy")
     return (
         <>
-            <h2>Challenge Accepted</h2>
+            <h2>Most Difficult Routes</h2>
             <Card>
                 <CardBody>
 
@@ -53,7 +53,7 @@ const RouteDifficulty = () => {
                     })}
                 </CardBody>
             </Card>
-            <h2>Hakunah Matata</h2>
+            <h2>Easy Peasy Routes </h2>
             <Card>
                 <CardBody>
 
@@ -63,7 +63,7 @@ const RouteDifficulty = () => {
                     })}
                 </CardBody>
             </Card>
-            <h2>Meh Youre Good Kid</h2>
+            <h2>Could be  challenge routes</h2>
             <Card>
                 <CardBody>
 

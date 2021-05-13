@@ -27,7 +27,7 @@ namespace GoYak.Repositories
                        SELECT r.Id as reviewId, r.userId as userId, r.text, r.routeId 
 				           
                         FROM Review r
-                         Left JOIN User u ON r.userId = u.Id
+                         Left JOIN [User] u ON r.userId = u.Id
                          LEFT JOIN Route rt ON r.routeId = rt.Id";
                     var reader = cmd.ExecuteReader();
 

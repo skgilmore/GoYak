@@ -12,12 +12,6 @@ const RouteAmmenities = () => {
     /* -------------------- Use use State to update the state of  routes as it is changed -------------------- */
 
     const [hasammenity, setAmmenity] = useState([])
-    //const [shortLengthRoutes, setShortLengthRoutes] = useState([])
-    //const [shortLengthRoutes, setShortLengthRoutes] = useState([])
-    //const [shortLengthRoutes, setShortLengthRoutes] = useState([])
-    //const [shortLengthRoutes, setShortLengthRoutes] = useState([])
-
-
 
     /* -------------------- To have access to the filter, filter routes by their varying lengths , reset state and rerender page-------------------- */
 
@@ -26,7 +20,7 @@ const RouteAmmenities = () => {
     /* -------------------- Reset the state of the page to show only routes with matching difficulty levels -------------------- */
 
     useEffect(() => {
-
+        getAllRoutes()
         getAllRoutesByAmmenity();
     }, [])
     /* -------------------- Route Ammenity is an array therfore cant check with dot notation. First Filter by length then map -------------------- */
@@ -57,7 +51,7 @@ const RouteAmmenities = () => {
                         {
                             hasammenity.map((route) => {
                                 const Ammms = routes.find(route => route.routeAmmenity.ammenityId === 2)
-                                return <Route key={route.id} route={route} ammenity={route.routeAmmenity.ammenityLabel} />
+                                return <Route key={route.id} route={route} ammenity={route.routeAmmenity.ammenityLabel} user={route.user?.id} />
                             })
                         }
                     </div>

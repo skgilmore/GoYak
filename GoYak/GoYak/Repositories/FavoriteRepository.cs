@@ -23,13 +23,13 @@ namespace GoYak.Repositories
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         cmd.CommandText = @"
-                    SELECT  f.id AS FavoriteId, f.routeId favoritedRouteId, f.userId as favoritedUserId,
-                            rt.id as routeId, rt.name as routeName, rt.url
-                            u.Is as userId, u.Name
+                    select f.id AS FavoriteId, f.routeId favoritedRouteId, f.userId,
+                            rt.id as routeId, rt.[name] as routeName, 
+                            u.Id as userId, u.Name
                     FROM  Favorite f
-                 LEFT JOIN  user u  ON u.id = f.userId
+                 LEFT JOIN  [User] u  ON u.id = f.userId
                  LEFT JOIN  route rt  ON rt.id = f.routeId
-                     WHERE  favoritedUserId = @userId";
+                     WHERE  userId = @userId";
 
                         DbUtils.AddParameter(cmd, "@userId", id);
 
@@ -44,7 +44,7 @@ namespace GoYak.Repositories
                                 User = DbUtils.IsDbNull(reader, "userId") ? null : new User()
                                 {
                                     Id = DbUtils.GetInt(reader, "userId"),
-                                    Name = DbUtils.GetString(reader, "userName"),
+                                    Name = DbUtils.GetString(reader, "Name"),
 
                                 },
                                 Route = new Route()

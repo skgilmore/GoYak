@@ -3,8 +3,10 @@ import { Link, useHistory } from "react-router-dom";
 import { ReviewContext } from "../../providers/ReviewProvider";
 import Review from "./Review";
 import { useParams } from "react-router-dom";
-import { Button } from "reactstrap"
+import { Button, Jumbotron, CardImg } from "reactstrap"
 import { deleteReview } from "./ReviewDelete"
+import { ReviewImg } from "./ReviewImg";
+
 
 const ReviewList = () => {
     const { reviews, getAllReviews, deleteReview } = useContext(ReviewContext);
@@ -21,15 +23,13 @@ const ReviewList = () => {
     //{review.user.id === currentUser.id && <ReviewEdit key={review.id} review={review} />}
     return (
         <section>
-            <Link to={`/review/getReviewByRouteId/${id}`} className="nav-link">
-            </Link>
 
 
             {reviews?.map((review) => {
-                return <Review key={review.id} review={review} />
+                return <Review key={review.id} review={review}
+                />
             }
             )}
-
 
 
             <Link to={`/review/add/${id}`} className="nav-link">

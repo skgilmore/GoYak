@@ -10,32 +10,22 @@ export const ReviewEdit = ({ review }) => {
 
     // Handles showing the delete button if the current user is viewing a post that they wrote. 
     const editButton = (reviewId) => {
+
         {
             return <Button type="button" onClick={() => {
                 history.push(`/review/edit/${reviewId}`)
             }} className="edit-button">
-                Editttttt
+                Edit
             </Button>
         }
     }
 
     return (
-        <Card className="m-2 shadow postCard">
-            <CardHeader><Link to={`review/${review.id}`}></Link></CardHeader>
-            <CardBody>
-                <CardText>
-                    <small>
-                        By: {review.name}
-                    </small>
-                </CardText>
-                <CardText>
-                    <small>
-                        Text: {review.text}
-                    </small>
-                </CardText>
-                {editButton(review.id)}
-            </CardBody>
-        </Card>
+        <div>
+            {editButton(review.id)}
+
+        </div>
     );
 };
 
+//<CardHeader><Link to={`review/${review.id}`}></Link></CardHeader>
