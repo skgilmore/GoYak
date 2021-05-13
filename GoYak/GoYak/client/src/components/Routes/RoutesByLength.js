@@ -42,7 +42,7 @@ const RouteLength = () => {
     console.log(getAllRoutesByDistance, "allroutes", shortLengthRoutes, "array in short?", longLengthRoutes, "arrayoflong?")
     return (
         <>
-            <h2>Challenge Accepted</h2>
+            <h2>Shortest Routes</h2>
             <Card>
                 <CardBody>
 
@@ -52,17 +52,16 @@ const RouteLength = () => {
                     })}
                 </CardBody>
             </Card>
-            <h2>Hakunah Matata</h2>
+            <h2>Customizable Distance Routes</h2>
             <Card>
                 <CardBody>
-
                     {tailoredLengthRoutes.map(route => {
                         /* -------------------- Map over the returned cats and display their info as assigned in CatCard Comp------------------- */
                         return <Route key={route.id} route={route} routeDistance={route.routeDistance} />
                     })}
                 </CardBody>
             </Card>
-            <h2>Meh you got this?</h2>
+            <h2>Longest Routes</h2>
             <Card>
                 <CardBody>
 

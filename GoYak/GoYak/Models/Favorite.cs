@@ -11,6 +11,8 @@ namespace GoYak.Models
         public int id { get; set; }
         public int routeId { get; set; }
         public int userId { get; set; }
+        public User User { get; set; }
+        public Route Route { get; set; }
 
     }
 }

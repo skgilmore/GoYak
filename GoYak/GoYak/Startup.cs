@@ -34,6 +34,7 @@ namespace GoYak
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<IReviewRepository, ReviewRepository>();
+            services.AddTransient<IFavoriteRepository, FavoriteRepository>();
 
 
 

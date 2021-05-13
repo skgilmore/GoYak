@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "../../providers/ReviewProvider.js";
 import { FormGroup, Label } from "reactstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
+import { ReviewImg } from "./ReviewImg.js";
 
 
 export const ReviewDetail = () => {

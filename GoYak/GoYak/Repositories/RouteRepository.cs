@@ -98,8 +98,6 @@ namespace GoYak.Repositories
                     var reader = cmd.ExecuteReader();
 
                     var routes = new List<Route>();
-
-                                //id = DbUtils.GetInt(reader, "id"),
                     while (reader.Read())
                     {
                         var routeId = DbUtils.GetInt(reader, "routeId");

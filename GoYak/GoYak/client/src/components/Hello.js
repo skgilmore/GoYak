@@ -10,15 +10,17 @@ export default function Hello() {
     return (
         <CardDeck>
             <Card>
-                <div class="card bg-dark text-blue">
-                    <img class="card-img" src="https://cdn.shopify.com/s/files/1/0071/1815/9930/files/get_outside_logo.png?height=628&pad_color=fff&v=1530989815&width=1200" alt="Card image"></img>
-                    <Link to={`route/`}>
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">See All Routes</h5>
-                            <p class="card-text">Check them out!.</p>
-                            <p class="card-text">Last updated 3 mins ago</p>
-                        </div>
-                    </Link>
+                <div class="card text-center">
+                    <div class="card bg-dark text-black">
+                        <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg"></img>
+                        <Link to={`route/`}>
+                            <div class="card-img-overlay">
+                                <h5 class="card-title text-dark font-weight-bold">Routes</h5>
+                                <i class="fas fa-external-link-square-alt color-black"></i>
+                                <p class="text-dark">Check them out!.</p>
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </Card>
             <Card>
@@ -26,7 +28,7 @@ export default function Hello() {
                     <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg" alt="Card image"></img>
                     <Link to={`route/distance`}>
                         <div class="card-img-overlay">
-                            <h5 class="card-title">See Routes By Distance</h5>
+                            <h5 class="card-title">Distance</h5>
                             <p class="card-text">Check them out!.</p>
                         </div>
                     </Link>
@@ -34,10 +36,10 @@ export default function Hello() {
             </Card>
             <Card>
                 <div class="card bg-dark text-blue">
-                    <img class="card-img" src="https://cdn.shopify.com/s/files/1/0071/1815/9930/files/get_outside_logo.png?height=628&pad_color=fff&v=1530989815&width=1200" alt="Card image"></img>
+                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg" alt="Card image"></img>
                     <Link to={`route/difficulty`}>
                         <div class="card-img-overlay">
-                            <h5 class="card-title">See All By difficulty</h5>
+                            <h5 class="card-title">Difficulty</h5>
                             <p class="card-text">Check them out!.</p>
                             <p class="card-text">Last updated 3 mins ago</p>
                         </div>
@@ -46,22 +48,20 @@ export default function Hello() {
             </Card>
             <Card>
                 <div class="card bg-dark text-blue">
-                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg" alt="Card image"></img>
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">See All Routes</h5>
-                        <p class="card-text">Check them out!.</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
-                    </div>
+                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg"></img>
+                    <Link to={`route/routeAmmenities`}>
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Amenity</h5>
+                            <p class="card-text">Check them out!.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                    </Link>
                 </div>
             </Card>
             <Card>
                 <h5 class="card-title">Your Favorites</h5>
-                <div class="card bg-dark text-blue">
-                    <img class="card-img" src="https://ih1.redbubble.net/image.430592575.3400/st,small,507x507-pad,600x600,f8f8f8.u12.jpg" alt="Card image"></img>
-                    <div class="card-img-overlay">
-                        <Favorites />
-
-                    </div>
+                <div class="card-img-overlay">
+                    <Favorites />
                 </div>
             </Card>
         </CardDeck>

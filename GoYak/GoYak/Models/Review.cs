@@ -9,7 +9,7 @@ namespace GoYak.Models
     {
         public int id { get; set; }
        public int userId { get; set; }
-      //  public User name{ get; set; }
+      //  public U
         public string text { get; set; }
         public string url { get;  set; }
         public DateTime? timeStamp { get; set; }

@@ -5,6 +5,8 @@ import React, { useContext, useEffect, useState } from "react";
 import ReviewList from "./ReviewsList";
 import { ReviewDelete } from "./ReviewDelete";
 import { ReviewEdit } from "./ReviewEdit";
+import { ReviewImg } from "./ReviewImg";
+
 
 
 
@@ -14,38 +16,44 @@ const Review = ({ review }) => {
 
 
 
+
     return (
         <>
             <div>
                 <Container fluid className="displaytop">
-                    <Jumbotron fluid>
-                        <h1 className="display-3">Fluid jumbotron</h1>
-                        <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                        <CardImg className="reviewRouteImg" width="100%" src={review.url} alt="route" />
+                    <Jumbotron>
+
+                        <div>
+                            <h1 className="display-3">{review.name}</h1>
+                            <p className="lead">Read reviews  or add your own!</p>
+                            <CardImg className="reviewRouteImg" width="100%" src={review.url} alt="route" />
+                        </div>
+                        <Card className="m-2 shadow postCard">
+                            <CardText>
+                                <small>
+                                    <Link to={`/route/${review.routeId}`}>
+                                        <h2>
+                                            <small>
+                                                Review: {review.text}
+                                            </small>
+                                        </h2>
+                                    </Link>
+                                    <h3>
+                                        Reviewer: {review.user.name}
+                                    </h3>
+                                    <div class="float-right">
+                                        {review.user.id === currentUser.id && <ReviewEdit key={review.id} review={review} />}
+                                        <br>
+                                        </br>
+                                        {review.user.id === currentUser.id && <ReviewDelete key={review.id} review={review} />}
+                                    </div>
+                                </small>
+                            </CardText>
+                        </Card>
                     </Jumbotron>
-
-                    <CardBody>
-
-                        <CardText>
-                            <Link to={`/route/${review.routeId}`}>
-                                <h3>
-                                    <small>
-                                        Review: {review.text}
-                                    </small>
-                                </h3>
-                            </Link>
-
-                            <small>
-                                Reviewer: {review.user.name}
-                            </small>
-                            {review.user.id === currentUser.id && <ReviewDelete key={review.id} review={review} />}
-                            {review.user.id === currentUser.id && <ReviewEdit key={review.id} review={review} />}
-                        </CardText>
-                    </CardBody>
                 </Container>
             </div>
         </>
-
     )
 }
 

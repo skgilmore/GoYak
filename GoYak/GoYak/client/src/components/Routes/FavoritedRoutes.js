@@ -1,14 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { HeartFill } from 'react-bootstrap-icons';
 import { useParams } from 'react-router';
-import { CardDeck, Card, Row } from 'reactstrap';
+import { FavoriteContext } from '../../providers/FavoriteProvider';
 import { RouteContext } from '../../providers/RouteProvider';
 import Route from "./Route";
+import { Button, Modal, Card, Row, Col, CardDeck, Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 
 
 const Favorites = () => {
     console.log("are you getting to this page?")
     const { getAllRoutes } = useContext(RouteContext)
+    const { deleteFavorite, favorites, getFavoritesByUserProfileId } = useContext(FavoriteContext);
+
     const [routes, setRoutes] = useState([])
     const [faveRoutes, setFaveRoutes] = useState([])
     //const { routeId } = useParams();
@@ -27,36 +31,52 @@ const Favorites = () => {
         setFaveRoutes(faveRoutes)
         console.log("fave routes pg routes?", faveRoutes, routes, "gimme routes")
     }, [routes])
-    //                 <button onClick={() => removeFavorite(index)}>
-    //                   <HeartFill size="20" />
-    //             </button>
 
+
+    // Modal - Setting states
+    /// const [show, setShow] = useState(false);
+    //const handleClose = () => setShow(false);
+    //const handleShow = () => setShow(true);
+
+    /*   // Function for the 'Delete Favorite' button
+       const handleDeleteFavorite = () => {
+           deleteFavorite(favorite.id)
+               .then(getFavoritesByUserProfileId(userId))
+               handleClose();
+
+
+               <Modal.Footer>
+    
+                   {currentUser.id === userId ?
+                       <><Button onClick={handleDeleteFavorite}>Delete Favorite</Button></> :
+                       <> </>
+                   }
+               </Modal.Footer>
+       };
+       */
     return (
-        <CardDeck>
-            <Row>
-                <Card className="faveCards">
-                    <Row>
-                        <div class="card bg-dark text-blue">
-                            < ul className="favorite-routes" >
-                                {
-                                    faveRoutes.map(route => {
-                                        /* -------------------- Map over the returned routes and display their info as assigned in RouteCard Comp------------------- */
-                                        return <Route key={route.id} route={route} user={route.user.id} />
-                                    })
+        <>
+            <CardDeck>
+                <Row>
+                    <Card className="faveCards">
 
-                                }
+                        {
+                            faveRoutes.map(route => {
+                                /* -------------------- Map over the returned routes and display their info as assigned in RouteCard Comp------------------- */
+                                return <Route key={route.id} route={route} user={route.user.id} />
+                            })
 
+                        }
+                    </Card >
+                </Row>
 
-                            </ul >
-                        </div>
-                    </Row>
-                </Card>
-            </Row>
-
-        </CardDeck>
+            </CardDeck >
+        </>
     )
 }
 export default Favorites
+    //</Modal >
+    //</Modal.Body >
 /*import { analytics } from "firebase";
 import { useContext, useEffect, useState } from "react";
 import React from 'react';
