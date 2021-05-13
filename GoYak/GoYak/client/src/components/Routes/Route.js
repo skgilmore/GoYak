@@ -1,18 +1,37 @@
-import React from "react";
-import { Card, CardBody, CardHeader, CardText, Button, CardImg, CardDeck } from "reactstrap";
+import React, { useContext, useState } from "react";
+//import { Button, Modal, Card, Row, Col } from "react-bootstrap";
+import { CardBody, CardHeader, CardText, Modal, Button, Card, Row, Col, CardImg, CardDeck } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 import RouteList from "./RouteList";
 import RouteAmmenities from "./RoutesByAmmenities";
+import { AddFavorite } from "./AddFavorite"
+import { FavoriteContext } from "../../providers/FavoriteProvider"
+import { unstable_concurrentAct } from "react-dom/cjs/react-dom-test-utils.development";
 
 const Route = ({ route }) => {
+    const { addFavorite, getFavoritesByUserProfileId } = useContext(FavoriteContext);
     const history = useHistory();
-
+    let currentUser = JSON.parse(sessionStorage.getItem("userProfile"))
+    let userId = currentUser
 
     const displayAmmenities2 =
         route.routeAmmenity?.map((ammenity) => ammenity.ammenityLabel);
 
-
-
+    // Modal stuff
+    //const [show, setShow] = useState(false);
+    //const handleClose = () => setShow(false);
+    //const handleShow = () => setShow(true);
+    // Add favorite function for the button's onClick
+    const handleAddFavorite = () => {
+        const favoriteObj = {
+            userId: userId.id,
+            routeId: route.id
+        }
+        addFavorite(favoriteObj)
+            .then(getFavoritesByUserProfileId(userId))
+        //     .then(handleClose())
+        console.log("add favorite")
+    }
     const mapAms = route.routeAmmenity
     if (route.recArea.url === null) {
         let defaultRoutePic = "https://cdn.shopify.com/s/files/1/0071/1815/9930/files/get_outside_logo.png?height=628&pad_color=fff&v=1530989815&width=1200"
@@ -39,10 +58,7 @@ const Route = ({ route }) => {
                         </CardText>
                         <CardText style={{ textTransform: 'capitalize', padding: 10, marginHorizontal: 10 }}>
                             <small>
-
-
                                 {
-
                                     route.routeAmmenity?.map((ammenity) => {
                                         return (
                                             <>
@@ -50,22 +66,16 @@ const Route = ({ route }) => {
                                                     Amenities:
                                             </small>
                                                 <div>
-
                                                     {ammenity.ammenityLabel}
                                                 </div>
-
                                             </>
                                         )
                                     })
                                 }
-
-
-
-
-
                             </small>
-
-
+                            <><Button className="favorite-btn" onClick={handleAddFavorite}>Add Favorite</Button></>
+                        :
+                        <></>
                         </CardText>
                     </CardBody>
                 </Card>
