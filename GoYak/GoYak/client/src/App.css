@@ -36,7 +36,14 @@
     transform: rotate(360deg);
   }
 }
-
+.card {
+  max-width: 450px;
+  align-items: center;
+}
+.route-card{
+  max-width: 400px;
+  align-items: center;
+}
 .routeImg{
     height: 250px;
     width: 100%;
@@ -46,8 +53,9 @@
     overflow: hidden;
     box-shadow: 0 px 0px 15 px -5px;
   }
-
-  .image-container{
+  
+ 
+ .image-container{
     overflow: hidden;
     height: 200px;
   }
@@ -61,4 +69,22 @@
     font-family: 'Noto Serif', serif;
     background-image: url(./images/waterimg.jpg);
  /* Background pattern from Toptal Subtle Patterns */
+}
+element.style {
+  width: 40%;
+  position: absolute;
+  right: 90px;
+  padding: 40px;
+  background: rgb(255, 255, 255);
+  display: block;
+  transform: translate3d(0px, 25.62px, 0px);
+}
+
+#main
+{         
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
 }

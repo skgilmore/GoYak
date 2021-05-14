@@ -7,6 +7,10 @@ import RouteAmmenities from "./RoutesByAmmenities";
 import { AddFavorite } from "./AddFavorite"
 import { FavoriteContext } from "../../providers/FavoriteProvider"
 import { unstable_concurrentAct } from "react-dom/cjs/react-dom-test-utils.development";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+
 
 const Route = ({ route }) => {
     const { addFavorite, getFavoritesByUserProfileId, favorites } = useContext(FavoriteContext);
@@ -18,11 +22,7 @@ const Route = ({ route }) => {
     const displayAmmenities2 =
         route.routeAmmenity?.map((ammenity) => ammenity.ammenityLabel);
 
-    // Modal stuff
-    //const [show, setShow] = useState(false);
-    //const handleClose = () => setShow(false);
-    //const handleShow = () => setShow(true);
-    // Add favorite function for the button's onClick
+
     const handleAddFavorite = () => {
         const favoriteObj = {
             userId: userId.id,
@@ -30,7 +30,6 @@ const Route = ({ route }) => {
         }
         addFavorite(favoriteObj)
             .then(getFavoritesByUserProfileId(userId))
-        //     .then(handleClose())
         console.log("add favorite")
     }
     const mapAms = route.routeAmmenity
@@ -41,47 +40,57 @@ const Route = ({ route }) => {
 
 
     return (
-        <>
+        <><div>
+
             <CardDeck className="routeCardDeck">
                 <Card className="m-2 shadow routeCard">
                     <CardImg className="routeImg" top width="100%" src={route.recArea?.url} alt="route" />
-                    <CardHeader><Link to={`review/getReviewByRouteId/${route.id}`}>{route.name}</Link></CardHeader>
-                    <CardBody>
-                        <CardText style={{ textTransform: 'capitalize' }}>
-                            <small>
-                                Length: {route.length}
-                            </small>
-                        </CardText>
-                        <CardText style={{ textTransform: 'capitalize' }}>
-                            <small>
-                                Difficulty: {route.difficultyLevel}
-                            </small>
-                        </CardText>
-                        <CardText style={{ textTransform: 'capitalize', padding: 10, marginHorizontal: 10 }}>
-                            <small>
-                                {
-                                    route.routeAmmenity?.map((ammenity) => {
-                                        return (
-                                            <>
-                                                <small>
-                                                    Amenities:
-                                            </small>
-                                                <div>
-                                                    {ammenity.ammenityLabel}
-                                                </div>
-                                            </>
-                                        )
-                                    })
-                                }
-                            </small>
-                            {route.user?.id !== currentUser.id && <><Button className="favorite-btn" onClick={handleAddFavorite}>Add Favorite</Button></>}
+                    <div class="card-img-overlay ">
+                        <Button className="favorite-btn, float-right" onClick={handleAddFavorite}>
+                            <FontAwesomeIcon size="3x" icon="heart" />
+                        </Button>
+                    </div>
 
+                    <CardHeader>
 
-                            <></>
-                        </CardText>
-                    </CardBody>
+                        <Link to={`/review/getReviewByRouteId/${route.id}`}>{route.name}</Link>
+                    </CardHeader>
+
+                    <CardText style={{ textTransform: 'capitalize' }}>
+                        <small>
+                            Length: {route.length}
+                        </small>
+                    </CardText>
+                    <CardText style={{ textTransform: 'capitalize' }}>
+                        <small>
+                            Difficulty: {route.difficultyLevel}
+                        </small>
+                    </CardText>
                 </Card>
+                <CardText style={{ textTransform: 'capitalize', padding: 10 }}>
+                    <small>
+                        {
+                            route.routeAmmenity?.map((ammenity) => {
+                                return (
+                                    <>
+                                        <small>
+                                            Amenities:
+                                            </small>
+                                        <div>
+                                            {ammenity.ammenityLabel}
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
+                    </small>
+
+
+
+
+                </CardText>
             </CardDeck >
+        </div>
         </>
     );
 };

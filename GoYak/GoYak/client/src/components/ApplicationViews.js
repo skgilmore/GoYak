@@ -11,6 +11,7 @@ import ReviewList from "./Reviews/ReviewsList";
 import { ReviewDetail } from "./Reviews/ReviewDetails";
 import RouteLength from "./Routes/RoutesByLength";
 import RouteAmmenities from "./Routes/RoutesByAmmenities";
+import { ReviewImg } from "./Reviews/ReviewImg";
 
 
 

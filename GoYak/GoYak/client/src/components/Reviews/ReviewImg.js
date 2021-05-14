@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CardImg } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { ReviewContext } from "../../providers/ReviewProvider";
+import { RouteContext } from "../../providers/RouteProvider";
 
 export const ReviewImg = ({ review }) => {
-    const history = useHistory();
+
 
     return (
 

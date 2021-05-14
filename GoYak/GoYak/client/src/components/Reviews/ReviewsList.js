@@ -18,6 +18,8 @@ const ReviewList = () => {
     }, []);
     console.log(reviews, "where you at")
 
+
+
     // Maps through each Review object, sending 
     // them to be converted to HTML then prints them all out.
     //{review.user.id === currentUser.id && <ReviewEdit key={review.id} review={review} />}
