@@ -4,16 +4,20 @@
 ## Table of Contents
   * [Project Requirements and Features List](#project-requirements-and-features-list)
   * [Technologies Used](#technologies-used)
-  * [Installing and Launching CATStone](#instructions-for-installing-CATSTone)
+  * [Installing and Launching GoYak](#instructions-for-installing-GoYak)
   * [Appendix 1: Planning Documentation](#appendix-1-planning-documentation)
     * [Entity Relationship Diagrams](#entity-relationship-diagram)
-    * [Wireframes](#wireframes)
   * [Appendix 2: Set Up Instructions](#appendix-2-set-up-instructions)
 
 ## Project Requirements and Features List
 ### Get Started
 When a user  registers an account with GoYak, the app loads their home screen to display different route filters as well as display their favorite routes. They can view more details on a given route including pictures of the route as well as reviews left my any user sorted by post date. A user may leave reviews on a specific route to help give other kayakers more information. A user may edit, update or delete their own reviews.
-![Get Started GIF](src/components/images/GoYakPreview.gif)
+![image](https://user-images.githubusercontent.com/74026523/118874855-f8089900-b8b0-11eb-82e9-!f0cc6ef6b93a.png)
+![image](https://user-images.githubusercontent.com/74026523/118874900-09ea3c00-b8b1-11eb-847e-4db7430cb34f.png)
+![image](https://user-images.githubusercontent.com/74026523/118874946-17072b00-b8b1-11eb-926a-b6728b1fd568.png)
+
+
+
 
 ## Technologies Used
   ### Development Languages, Libraries and Tools
@@ -36,7 +40,7 @@ When a user  registers an account with GoYak, the app loads their home screen to
 -   DbDiagram.io
 
 
-## Instructions for Installing CATStone
+## Instructions for Installing GoYak
   To launch the GoYak app, you will need to have access to Git, Visual Studio (configured to run server-side ASP.NET Web API C# code), -   MS SQL Server (Express or higher).
 . If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
 
@@ -61,7 +65,8 @@ You will need to create a Firebase project to have working authentication and au
 -   Create a user account in your Firebase project's auth section with that email address (and any password) and replace the data in that user's `FirebaseUserId` column in the database with the id generated in your Firebase project
 -   Load `GoYaj.sln` in Visual Studio and run the GoYak server.
 
-### Front-end Setup
+### Front-end Setup!![image](https://user-images.githubusercontent.com/74026523/118874557-a829d200-b8b0-11eb-8f6e-6b41d3bc5a86.png)
+
 
 -   Create a file in `GoYak/client/` called `.env.local`
 -   In this file, paste `REACT_APP_API_KEY=Web API Key`, replacing "Web API Key" with your unique key from your Firebase project's project settings
@@ -74,7 +79,7 @@ You will need to create a Firebase project to have working authentication and au
   ## Appendix 1: Planning Documentation
 
   ### Entity Relationship Diagram
-  <img src="src\components\images\GoYakERD.PNG" width="55%">
+![image](https://user-images.githubusercontent.com/74026523/118875095-4158e880-b8b1-11eb-9404-0a65d41a05e7.png)
 
 
 
@@ -111,4 +116,3 @@ You will need to create a Firebase project to have working authentication and au
   Now you can follow the [installation instructions](#instructions-for-installing-GoYak) to get GoYakup and running on your machine.
 
   This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
