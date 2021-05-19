@@ -4,10 +4,9 @@
 ## Table of Contents
   * [Project Requirements and Features List](#project-requirements-and-features-list)
   * [Technologies Used](#technologies-used)
-  * [Installing and Launching CATStone](#instructions-for-installing-CATSTone)
+  * [Installing and Launching GoYak](#instructions-for-installing-GoYak)
   * [Appendix 1: Planning Documentation](#appendix-1-planning-documentation)
     * [Entity Relationship Diagrams](#entity-relationship-diagram)
-    * [Wireframes](#wireframes)
   * [Appendix 2: Set Up Instructions](#appendix-2-set-up-instructions)
 
 ## Project Requirements and Features List
@@ -36,7 +35,7 @@ When a user  registers an account with GoYak, the app loads their home screen to
 -   DbDiagram.io
 
 
-## Instructions for Installing CATStone
+## Instructions for Installing GoYak
   To launch the GoYak app, you will need to have access to Git, Visual Studio (configured to run server-side ASP.NET Web API C# code), -   MS SQL Server (Express or higher).
 . If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
 
