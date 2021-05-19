@@ -16,7 +16,6 @@ const ReviewList = () => {
         getAllReviews(id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(reviews, "where you at")
 
 
 
