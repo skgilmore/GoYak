@@ -16,7 +16,8 @@ const ReviewList = () => {
         getAllReviews(id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(reviews, "where you at")
+
+
 
     // Maps through each Review object, sending 
     // them to be converted to HTML then prints them all out.

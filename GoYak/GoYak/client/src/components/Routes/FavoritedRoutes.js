@@ -5,6 +5,7 @@ import { RouteContext } from '../../providers/RouteProvider';
 import Route from "./Route";
 import { Button, Modal, Card, Row, Col, CardDeck, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { CardBody } from 'reactstrap';
 
 
 
@@ -56,21 +57,32 @@ const Favorites = () => {
        */
     return (
         <>
-            <CardDeck>
-                <Row>
-                    <Card className="faveCards">
+            <CardBody>
 
-                        {
-                            faveRoutes.map(route => {
-                                /* -------------------- Map over the returned routes and display their info as assigned in RouteCard Comp------------------- */
-                                return <Route key={route.id} route={route} user={route.user.id} />
-                            })
+                <div className="faveCards">
+                    <CardBody>
+                        <CardDeck>
+                            <br></br>
+                            <br></br>
 
-                        }
-                    </Card >
-                </Row>
+                            <h3>Your Favorites:</h3>
 
-            </CardDeck >
+                            <br></br>
+                            <br></br>
+
+                            {
+                                faveRoutes.map(route => {
+                                    /* -------------------- Map over the returned routes and display their info as assigned in RouteCard Comp------------------- */
+                                    return <Route key={route.id} route={route} user={route.user.id} />
+                                })
+
+                            }
+                        </CardDeck>
+                    </CardBody>
+                </div >
+            </CardBody>
+
+
         </>
     )
 }

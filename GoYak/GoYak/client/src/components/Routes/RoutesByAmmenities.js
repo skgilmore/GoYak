@@ -25,6 +25,7 @@ const RouteAmmenities = () => {
     }, [])
     /* -------------------- Route Ammenity is an array therfore cant check with dot notation. First Filter by length then map -------------------- */
 
+
     useEffect(() => {
         const hasammenity = routes.filter(route => {
             if (
@@ -42,21 +43,33 @@ const RouteAmmenities = () => {
 
     }, [routes])
 
+    const cardBody = {
+        flex: '0 1 auto',
+        justifyContent: 'space-evenly',
+        minHeight: '1px',
+        padding: '1.25rem',
+        background: '#f2f3ffe3',
+    }
+
     return (
         <>
-            <h2>They've got what you need:</h2>
-            <Card>
-                <CardBody>
-                    <div>
-                        {
-                            hasammenity.map((route) => {
-                                const Ammms = routes.find(route => route.routeAmmenity.ammenityId === 2)
-                                return <Route key={route.id} route={route} ammenity={route.routeAmmenity.ammenityLabel} user={route.user?.id} />
-                            })
-                        }
+            <CardBody>
+                <CardDeck>
+                    <div style={cardBody}>
+
+
+                        <h2>They've got what you need:</h2>
+                        <div>
+                            {
+                                hasammenity.map((route) => {
+                                    const Ammms = routes.find(route => route.routeAmmenity.ammenityId === 2)
+                                    return <Route key={route.id} route={route} ammenity={route.routeAmmenity.ammenityLabel} user={route.user?.id} />
+                                })
+                            }
+                        </div>
                     </div>
-                </CardBody>
-            </Card>
+                </CardDeck>
+            </CardBody>
 
 
         </>
