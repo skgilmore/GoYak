@@ -12,7 +12,7 @@
 ## Project Requirements and Features List
 ### Get Started
 When a user  registers an account with GoYak, the app loads their home screen to display different route filters as well as display their favorite routes. They can view more details on a given route including pictures of the route as well as reviews left my any user sorted by post date. A user may leave reviews on a specific route to help give other kayakers more information. A user may edit, update or delete their own reviews.
-![Get Started GIF](src/components/images/GoYakPreview.gif)
+![Get Started GIF](GoYak\GoYak\client\src\images\GoYakPreview.gif)
 
 ## Technologies Used
   ### Development Languages, Libraries and Tools
@@ -73,7 +73,7 @@ You will need to create a Firebase project to have working authentication and au
   ## Appendix 1: Planning Documentation
 
   ### Entity Relationship Diagram
-  <img src="src\components\images\GoYakERD.PNG" width="55%">
+  <img src="GoYak\GoYak\client\src\images\GoYakERD.png" width="55%">
 
 
 
