@@ -12,7 +12,8 @@
 ## Project Requirements and Features List
 ### Get Started
 When a user  registers an account with GoYak, the app loads their home screen to display different route filters as well as display their favorite routes. They can view more details on a given route including pictures of the route as well as reviews left my any user sorted by post date. A user may leave reviews on a specific route to help give other kayakers more information. A user may edit, update or delete their own reviews.
-![Get Started GIF](GoYak\GoYak\client\src\images\GoYakPreview.gif)
+![image](https://user-images.githubusercontent.com/74026523/118874477-95170200-b8b0-11eb-92ba-7829e594220a.png)
+
 
 ## Technologies Used
   ### Development Languages, Libraries and Tools
@@ -60,7 +61,8 @@ You will need to create a Firebase project to have working authentication and au
 -   Create a user account in your Firebase project's auth section with that email address (and any password) and replace the data in that user's `FirebaseUserId` column in the database with the id generated in your Firebase project
 -   Load `GoYaj.sln` in Visual Studio and run the GoYak server.
 
-### Front-end Setup
+### Front-end Setup!![image](https://user-images.githubusercontent.com/74026523/118874557-a829d200-b8b0-11eb-8f6e-6b41d3bc5a86.png)
+
 
 -   Create a file in `GoYak/client/` called `.env.local`
 -   In this file, paste `REACT_APP_API_KEY=Web API Key`, replacing "Web API Key" with your unique key from your Firebase project's project settings
